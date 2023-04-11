@@ -110,7 +110,8 @@ const updateCartHandler = (item, qty) => {
                 </li>
                 <li>
                   <button
-                    onClick={() => router.push("/shipping")}
+                    onClick={() => router.push("login?redirect=/shipping")}
+                    ///check if user is logged in, if so redirect to shipping
                     className="primary-button w-full"
                   >
                     Check Out
