@@ -29,8 +29,20 @@ export default function VinylScreen() {
                 width={640}
                 height={640}
                 Layout='responsive'>
-                    
+
                 </Image>
+            </div>
+            <div>
+                <ul>
+                    <li>
+                        <h1 className='text-lg'>{vinyl.name}</h1>
+                    </li>
+                    <li>Genre: {vinyl.genre} </li>
+                    <li>Artist: {vinyl.artist}</li>
+                    <li>Rating: {vinyl.rating}</li>
+                    <li>Reviews: {vinyl.numReviews}</li>
+                    <li>Description: {vinyl.description}</li>
+                </ul>
             </div>
         </div>
     </Layout>
