@@ -9,6 +9,8 @@ import { productionBrowserSourceMaps } from "../../../next.config";
 import { useContext } from "react";
 import { Store } from "../../../utils/Store";
 
+//useContext allows props to be passed freely without needing to be passed at every level
+
 export default function VinylScreen() {
     const {state, dispatch} = useContext(Store)
   const { query } = useRouter();
@@ -21,7 +23,11 @@ export default function VinylScreen() {
 
 const addToCartHandler = () => {
     const existItem = state.cart.cartItems.find((x) => x.slug === vinyl.slug)
-    const quantity = existItem ? existItem.quantity + 1 : 1
+    const quantity = existItem ? existItem.quantity + 1 : 1;
+    if (vinyl.countInStock < quantity) {
+        alert('Sorry. Item out of stock')
+        return
+    }
 dispatch ({type: 'CART_ADD_ITEM', payload: {...vinyl, quantity}})
 }
 
