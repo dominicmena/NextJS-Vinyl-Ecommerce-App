@@ -13,7 +13,7 @@ export function Layout({ title, children }) {
       </Head>
       <div className="flex min-h-screen flex-col justify-between">
         <header>
-            <nav>
+            <nav className="flex h-12 justify-between">
                 <Link href='/' className="text-lg font-bold">
 
                     uVinyl
