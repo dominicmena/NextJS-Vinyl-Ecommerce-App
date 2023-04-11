@@ -5,15 +5,26 @@ import { useEffect } from "react";
 import data from "../../../utils/data";
 import Link from "next/link";
 import Image from "next/image";
+import { productionBrowserSourceMaps } from "../../../next.config";
+import { useContext } from "react";
+import { Store } from "../../../utils/Store";
 
 export default function VinylScreen() {
+    const {state, dispatch} = useContext(Store)
   const { query } = useRouter();
   const { slug } = query;
   const vinyl = data.vinyl.find((x) => x.slug === slug);
   if (!vinyl) {
     return <div>Vinyl Not Found</div>;
   }
-  useEffect(() => {}, []);
+  
+
+const addToCartHandler = () => {
+dispatch ({type: 'CART_ADD_ITEM', payload: {...vinyl, quantity: 1}})
+}
+
+
+
   return (
     <Layout title={vinyl.name}>
       <div className="py-2">
@@ -53,7 +64,7 @@ export default function VinylScreen() {
                 <div>Status</div>
                 <div>{vinyl.countInStock > 0 ? "In Stock" : "Unavailable"}</div>
               </div>
-              <button className="primary-button w-full">Add to Cart</button>
+              <button className="primary-button w-full" onClick={addToCartHandler}>Add to Cart</button>
             </div>
           </div>
         </div>
