@@ -3,6 +3,8 @@ import { Store } from "../../utils/Store";
 import { useContext } from "react";
 import { Layout } from "../../components/Layout";
 import Link from "next/link";
+import { XCircleIcon } from '@heroicons/react/outline/XCircleIcon'
+import Image from "next/image";
 
 export default function CartScreen() {
   const { state, dispatch } = useContext(Store);
@@ -38,7 +40,7 @@ export default function CartScreen() {
                           className="flex items-center"
                         >
                           <Image
-                            src={item.name}
+                            src={item.image}
                             alt={item.name}
                             width={50}
                             height={50}
@@ -51,6 +53,11 @@ export default function CartScreen() {
                         {item.quantity}
                       </td>
                       <td className="p-5 text-right">${item.price}</td>
+                      <td className="p-5 text-center">
+                        <button>
+                            
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
