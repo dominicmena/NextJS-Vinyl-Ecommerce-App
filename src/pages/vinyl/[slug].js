@@ -20,7 +20,9 @@ export default function VinylScreen() {
   
 
 const addToCartHandler = () => {
-dispatch ({type: 'CART_ADD_ITEM', payload: {...vinyl, quantity: 1}})
+    const existItem = state.cart.cartItems.find((x) => x.slug === vinyl.slug)
+    const quantity = existItem ? existItem.quantity + 1 : 1
+dispatch ({type: 'CART_ADD_ITEM', payload: {...vinyl, quantity}})
 }
 
 
