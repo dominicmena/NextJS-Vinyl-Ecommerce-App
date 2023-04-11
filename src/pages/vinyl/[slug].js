@@ -13,6 +13,7 @@ import { Store } from "../../../utils/Store";
 
 export default function VinylScreen() {
     const {state, dispatch} = useContext(Store)
+    const router = useRouter()
   const { query } = useRouter();
   const { slug } = query;
   const vinyl = data.vinyl.find((x) => x.slug === slug);
@@ -29,6 +30,7 @@ const addToCartHandler = () => {
         return
     }
 dispatch ({type: 'CART_ADD_ITEM', payload: {...vinyl, quantity}})
+router.push('/cart')
 }
 
 
