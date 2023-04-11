@@ -13,8 +13,8 @@ export default function CartScreen() {
   } = state;
 
   const removeItemHandler = (item) => {
-    dispatch({type: 'CART_REMOVE_ITEM', payload:item })
-  }
+    dispatch({ type: "CART_REMOVE_ITEM", payload: item });
+  };
 
   return (
     <div>
@@ -78,6 +78,17 @@ export default function CartScreen() {
                   ))}
                 </tbody>
               </table>
+            </div>
+            <div className="card p-5">
+              <ul>
+                <li>
+                  <div className="pb-3">Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)})
+                  {' '}
+                  : $
+                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         )}
