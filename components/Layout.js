@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import React from "react";
 
 export function Layout({ title, children }) {
@@ -10,8 +11,19 @@ export function Layout({ title, children }) {
         <meta name="viewport" content="Ecommerce Website" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <header>header</header>
+      <div className="flex min-h-screen flex-col justify-between">
+        <header>
+            <nav>
+                <Link href='/' className="text-lg font-bold">
+
+                    uVinyl
+                </Link>
+                <div>
+                    <Link href='/cart'>Cart</Link>
+                    <Link href='/login'>Login</Link>
+                </div>
+            </nav>
+        </header>
         <main>{children}</main>
         <footer>footer</footer>
       </div>
