@@ -53,6 +53,7 @@ export default function VinylScreen() {
                 <div>Status</div>
                 <div>{vinyl.countInStock > 0 ? "In Stock" : "Unavailable"}</div>
               </div>
+              <button className="primary-button w-full">Add to Cart</button>
             </div>
           </div>
         </div>
