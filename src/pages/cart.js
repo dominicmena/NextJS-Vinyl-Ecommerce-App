@@ -8,7 +8,7 @@ import {} from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
 
 export default function CartScreen() {
-    const router = useRouter()
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
     cart: { cartItems },
@@ -17,6 +17,11 @@ export default function CartScreen() {
   const removeItemHandler = (item) => {
     dispatch({ type: "CART_REMOVE_ITEM", payload: item });
   };
+
+const updateCartHandler = (item, qty) => {
+    const quantity = Number(qty);
+    dispatch({type: 'CART_ADD_ITEM', payload:{...item, quantity}})
+}
 
   return (
     <div>
@@ -56,7 +61,20 @@ export default function CartScreen() {
                           {item.name}
                         </Link>
                       </td>
-                      <td className="p-5 text-right">{item.quantity}</td>
+                      <td className="p-5 text-right">
+                        <select
+                          value={item.quantity}
+                          onChange={(e) =>
+                            updateCartHandler(item, e.target.value)
+                          }
+                        >
+                          {[...Array(item.countInStock).keys()].map((x) => (
+                            <option key={x + 1} value={x + 1}>
+                                {x + 1}
+                            </option>
+                          ))}
+                        </select>
+                      </td>
                       <td className="p-5 text-right">${item.price}</td>
                       <td className="p-5 text-center">
                         <button onClick={() => removeItemHandler(item)}>
@@ -84,16 +102,18 @@ export default function CartScreen() {
             <div className="card p-5">
               <ul>
                 <li>
-                  <div className="pb-3">Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)})
-                  {' '}
-                  : $
-                  {cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
+                  <div className="pb-3">
+                    Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}) :
+                    ${cartItems.reduce((a, c) => a + c.quantity * c.price, 0)}
                   </div>
                 </li>
                 <li>
-                    <button onClick={() => router.push('/shipping')} className="primary-button w-full">
-                        Check Out
-                    </button>
+                  <button
+                    onClick={() => router.push("/shipping")}
+                    className="primary-button w-full"
+                  >
+                    Check Out
+                  </button>
                 </li>
               </ul>
             </div>
