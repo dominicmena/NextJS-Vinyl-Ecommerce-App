@@ -6,8 +6,9 @@ import Link from "next/link";
 import Image from "next/image";
 import {} from "@heroicons/react/24/solid";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
-export default function CartScreen() {
+function CartScreen() {
   const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const {
@@ -123,3 +124,7 @@ const updateCartHandler = (item, qty) => {
     </div>
   );
 }
+
+export default dynamic(()=> Promise.resolve(CartScreen), {ssr:false})
+
+//exported the component so it's rendered client side
