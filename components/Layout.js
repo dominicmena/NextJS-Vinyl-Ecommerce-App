@@ -13,19 +13,21 @@ export function Layout({ title, children }) {
       </Head>
       <div className="flex min-h-screen flex-col justify-between">
         <header>
-            <nav className="flex h-12 justify-between">
+            <nav className="flex h-12 justify-between shadow-md items-center px-4">
                 <Link href='/' className="text-lg font-bold">
 
                     uVinyl
                 </Link>
                 <div>
-                    <Link href='/cart'>Cart</Link>
-                    <Link href='/login'>Login</Link>
+                    <Link href='/cart' className="p-2">Cart</Link>
+                    <Link href='/login' className="p-2">Login</Link>
                 </div>
             </nav>
         </header>
-        <main>{children}</main>
-        <footer>footer</footer>
+        <main className="container m-auto mt-4 px-4">{children}</main>
+        <footer className="flex justify-center items-center h-10 shadow-inner">
+            <p>Copyright 2023 uVinyl</p>
+        </footer>
       </div>
     </>
   );
