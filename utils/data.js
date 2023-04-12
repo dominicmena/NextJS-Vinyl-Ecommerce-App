@@ -14,7 +14,7 @@ const data = {
             password: bcrypt.hashSync('123456'),
             isAdmin: false,
         }
-    ]
+    ],
     vinyl: [
         {
             name: 'Led Zeppelin I',
