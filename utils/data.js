@@ -1,4 +1,20 @@
+import bcrypt from 'bcryptjs'
+
 const data = {
+    users: [
+        {
+            name: 'Dominic',
+            email: 'admin@example.com',
+            password: bcrypt.hashSync('123456'),
+            isAdmin: true,
+        },
+        {
+            name: 'Stella',
+            email: 'user@example.com',
+            password: bcrypt.hashSync('123456'),
+            isAdmin: false,
+        }
+    ]
     vinyl: [
         {
             name: 'Led Zeppelin I',
