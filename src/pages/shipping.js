@@ -6,6 +6,7 @@ import { Store } from '../../utils/Store'
 import Cookies from 'js-cookie'
 import { useContext } from 'react'
 import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 
 
@@ -20,6 +21,7 @@ export default function ShippingScreen() {
     const { state, dispatch } = useContext(Store)
     const { cart } = state
     const { shippingAddress } = cart
+    const router = useRouter()
 
     useEffect(() => {
         setValue('fullname', shippingAddress.fullName )
@@ -48,6 +50,7 @@ export default function ShippingScreen() {
             })
             
         )
+        router.push('/payment')
     }
 
   return (
