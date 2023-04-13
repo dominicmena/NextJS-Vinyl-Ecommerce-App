@@ -1,5 +1,5 @@
-const { default: Vinyl } = require("../../../../models/Vinyl")
-const { default: db } = require("../../../../utils/db")
+import Vinyl from "../../../../models/Vinyl"
+import db from "../../../../utils/db"
 
 const handler = async (req, res) => {
 

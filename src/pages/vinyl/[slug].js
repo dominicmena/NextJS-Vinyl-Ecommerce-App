@@ -26,8 +26,8 @@ export default function VinylScreen(props) {
 const addToCartHandler = async() => {
     const existItem = state.cart.cartItems.find((x) => x.slug === vinyl.slug)
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/vinyl/${vinyl._id}`)
-    
+    const { data } = await axios.get(`/api/vinyls/${vinyl._id}`)
+
     if (vinyl.countInStock < quantity) {
         alert('Sorry. Item out of stock')
         return
