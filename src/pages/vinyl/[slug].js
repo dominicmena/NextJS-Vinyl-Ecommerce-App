@@ -28,7 +28,7 @@ const addToCartHandler = async() => {
     const quantity = existItem ? existItem.quantity + 1 : 1;
     const { data } = await axios.get(`/api/vinyls/${vinyl._id}`)
 
-    if (vinyl.countInStock < quantity) {
+    if (data.countInStock < quantity) {
         alert('Sorry. Item out of stock')
         return
     }

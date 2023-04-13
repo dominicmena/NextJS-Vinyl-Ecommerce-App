@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 
-export default function ProductItem({vinyl}) {
+export default function ProductItem({vinyl , addToCartHandler }) {
   return (
     <div className='card'>
         <Link href={`/vinyl/${vinyl.slug}`}>
@@ -22,7 +22,7 @@ export default function ProductItem({vinyl}) {
             </Link>
             <p className='mb-2'>{vinyl.artist}</p>
             <p>${vinyl.price}</p>
-            <button className='primary-button' type='button'>
+            <button className='primary-button' type='button' onClick={() => addToCartHandler(vinyl)}>
                 Add to Cart
             </button>
         </div>
