@@ -41,6 +41,20 @@ export default function ShippingScreen() {
                 <div className='text-red-500'>{errors.fullName.message}</div>
             )}
             </div>
+            <div className='mb-4'>
+                <label htmlFor='address'>Address</label>
+                <input 
+                className='w-full'
+                id='address'
+                {...register('address', {
+                    required: 'Please enter address',
+                    minLength: {value: 3, message: 'Address is more than 2 chars'}
+                })}
+                />
+                {errors.address && (
+                    <div className='text-red-500'>{errors.address.message}</div>
+                )}
+            </div>
         </form>
     </Layout>
   )
