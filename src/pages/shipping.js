@@ -80,6 +80,21 @@ export default function ShippingScreen() {
                     <div className='text-red-500'>{errors.postalCode.message}</div>
                 )}
             </div>
+            <div className='mb-4'>
+                <label htmlFor='country'>Country</label>
+                <input className='w-full'
+                id='country'
+                {...register('country', {
+                    required: 'Please enter country'
+                })}
+                />
+                {errors.country && (
+                    <div className='text-red-500'>{errors.country.message}</div>
+                )}
+            </div>
+            <div className='mb-4 flex justify-between'>
+                <button className='primary-button'>Next</button>
+            </div>
         </form>
     </Layout>
   )
