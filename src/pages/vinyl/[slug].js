@@ -8,23 +8,26 @@ import Image from "next/image";
 import { productionBrowserSourceMaps } from "../../../next.config";
 import { useContext } from "react";
 import { Store } from "../../../utils/Store";
+import db from "../../../utils/db";
+import Vinyl from "../../../models/Vinyl";
+import axios from "axios";
 
 //useContext allows props to be passed freely without needing to be passed at every level
 
-export default function VinylScreen() {
+export default function VinylScreen(props) {
+    const { vinyl } = props
     const {state, dispatch} = useContext(Store)
     const router = useRouter()
-  const { query } = useRouter();
-  const { slug } = query;
-  const vinyl = data.vinyl.find((x) => x.slug === slug);
   if (!vinyl) {
-    return <div>Vinyl Not Found</div>;
+    return <Layout title={'Vinyl Not Found'}>Vinyl Not Found</Layout>;
   }
   
 
-const addToCartHandler = () => {
+const addToCartHandler = async() => {
     const existItem = state.cart.cartItems.find((x) => x.slug === vinyl.slug)
     const quantity = existItem ? existItem.quantity + 1 : 1;
+    const { data } = await axios.get(`/api/vinyl/${vinyl._id}`)
+    
     if (vinyl.countInStock < quantity) {
         alert('Sorry. Item out of stock')
         return
@@ -82,3 +85,18 @@ router.push('/cart')
     </Layout>
   );
 }
+
+export async function getServerSideProps(context) {
+  const { params } = context
+  const { slug } = params
+
+  await db.connect()
+  const vinyl = await Vinyl.findOne({ slug }).lean() //lean converts to JSON
+  await db.disconnect()
+  return {
+    props: {
+      vinyl: vinyl ? db.convertDocToObj(vinyl) : null,
+    },
+  }
+}
+
