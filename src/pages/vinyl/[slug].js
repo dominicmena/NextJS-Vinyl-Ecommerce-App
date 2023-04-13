@@ -11,6 +11,7 @@ import { Store } from "../../../utils/Store";
 import db from "../../../utils/db";
 import Vinyl from "../../../models/Vinyl";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 //useContext allows props to be passed freely without needing to be passed at every level
 
@@ -29,8 +30,7 @@ const addToCartHandler = async() => {
     const { data } = await axios.get(`/api/vinyls/${vinyl._id}`)
 
     if (data.countInStock < quantity) {
-        alert('Sorry. Item out of stock')
-        return
+return toast.error ('Sorry item out of stock')
     }
 dispatch ({type: 'CART_ADD_ITEM', payload: {...vinyl, quantity}})
 router.push('/cart')

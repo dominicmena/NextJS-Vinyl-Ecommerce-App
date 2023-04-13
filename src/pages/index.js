@@ -23,8 +23,8 @@ export default function Home({vinyl}) {
     const { data } = await axios.get(`/api/vinyls/${vinyl._id}`)
 
     if (data.countInStock < quantity) {
-        toast.error('Sorry. Item out of stock')
-        return
+      return toast.error('Sorry. Item out of stock')
+        
     }
 dispatch ({type: 'CART_ADD_ITEM', payload: {...vinyl, quantity}})
 toast.success('Product added to cart')
