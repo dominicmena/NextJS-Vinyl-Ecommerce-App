@@ -1,11 +1,11 @@
 // /api/orders/:id
 import { getToken } from 'next-auth/jwt';
-import Order from '../../../../models/Orders';
-import db from '../../../../utils/db';
+import Order from '../../../../../models/Orders';
+import db from '../../../../../utils/db';
 
 const handler = async (req, res) => {
-  const session = await getToken({ req });
-  if (!session) {
+  const user = await getToken({ req });
+  if (!user) {
     return res.status(401).send('signin required');
   }
 
