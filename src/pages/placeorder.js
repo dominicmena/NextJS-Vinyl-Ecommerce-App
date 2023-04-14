@@ -53,7 +53,7 @@ export default function PlaceOrderScreen() {
           cartItems: [],
         })
       );
-      router.push(`/orders/${data._id}`);
+      router.push(`/order/${data._id}`);
     } catch (err) {
       setLoading(false);
       toast.error(getError(err));

@@ -50,7 +50,11 @@ router.push('/cart')
             alt={vinyl.name}
             width={640}
             height={640}
-            Layout="responsive"
+            sizes="100vw"
+            style={{
+              width: '100%',
+              height: 'auto',
+            }}
           ></Image>
         </div>
         <div>

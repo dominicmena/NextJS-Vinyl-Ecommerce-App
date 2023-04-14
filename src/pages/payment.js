@@ -78,4 +78,4 @@ export default function PaymentScreen() {
   )
 }
 
-PaymentScreen.auth = true
+PaymentScreen.auth = true;
