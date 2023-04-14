@@ -53,7 +53,7 @@ export default function LoginScreen() {
         <div className="mb-4">
           <label htmlFor="name">Name</label>
           <input 
-          type='name'
+          type='text'
           className="w-full"
           id='name'
           autoFocus
@@ -77,7 +77,7 @@ export default function LoginScreen() {
         })}
             className="w-full"
             id="email"
-            autoFocus
+          
           ></input>
           {errors.email && (
             <div className="text-red-500">{errors.email.message}</div>
@@ -99,6 +99,24 @@ export default function LoginScreen() {
             <div className="text-red-500">{errors.password.message}</div>
           )}
         </div>
+            <div className="mb-4">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input 
+              className="w-full"
+              type='password'
+              id='confirmPassword'
+              {...register('confirmPassword', {
+                required: 'Please enter confirm password',
+                validate: (value) => value === getValues('password'), 
+                minLength: {
+                  value: 2,
+                  message: 'confirm password is more than 5 chars'
+                },
+              })}
+              />
+            </div>
+
+
         <div className="mb-4">
           <button className="primary-button">Login</button>
         </div>
