@@ -42,3 +42,11 @@ export default NextAuth({
         }),
     ],
 })
+
+//This is a code that sets up user authentication for a Next.js application using NextAuth.
+
+//The code imports the required dependencies and sets up the authentication providers, in this case, only one - CredentialsProvider, which allows users to authenticate using email and password.
+
+//The jwt and session callbacks are used to set and retrieve data from the user's JSON Web Token (JWT) and session, respectively. The jwt callback is called when the user logs in, and it adds the user's ID and admin status to the token. The session callback is called when the user navigates through the app, and it adds the user's ID and admin status to the session.
+
+//The authorize function is called when the user attempts to log in. It first connects to a database using db.connect(), finds the user with the matching email address in the User model, and then checks whether the password provided by the user matches the hashed password in the database using bcryptjs.compareSync(). If the email and password match, the user's data is returned as an object, including the user's ID, name, email, image, and admin status. If the email and password do not match, an error is thrown with the message "Invalid email or password". Finally, the database connection is closed using db.disconnect().
