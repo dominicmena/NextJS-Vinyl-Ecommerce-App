@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useReducer } from 'react'
 import { Layout } from '../../components/Layout'
 import { getError } from '../../utils/error'
+import { useEffect } from 'react'
 
 function reducer(state, action) {
     switch (action.type) {
@@ -34,6 +35,7 @@ function OrderHistoryScreen() {
                 dispatch({ type: 'FETCH_FAIL', payload: getError(err)})
             }
         }
+        fetchOrders()
     }, [])
   return (
     <Layout title="Order History">
@@ -73,7 +75,7 @@ function OrderHistoryScreen() {
                                     : 'not delivered'}
                                     </td>
                                     <td className='p-5'>
-                                        <Link href={`/order/${order._id}`} passHref>
+                                        <Link href={`/order/${order._id}`}>
                                             Details
                                         </Link>
                                     </td>
