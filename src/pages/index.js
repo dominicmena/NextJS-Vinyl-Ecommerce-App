@@ -6,11 +6,10 @@ import { toast } from 'react-toastify'
 import { Layout } from '../../components/Layout'
 import ProductItem from '../../components/ProductItem'
 import Vinyl from '../../models/Vinyl'
-import data from '../../utils/data'
+
 import db from '../../utils/db'
 import { Store } from '../../utils/Store'
 
-const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({vinyl}) {
 

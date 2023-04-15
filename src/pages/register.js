@@ -7,7 +7,6 @@ import { getError } from "../../utils/error";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { redirect } from "next/dist/server/api-utils";
 import axios from "axios";
 
 export default function LoginScreen() {

@@ -5,7 +5,6 @@ import { toast } from 'react-toastify'
 import CheckoutWizard from '../../components/CheckoutWizard'
 import { Layout } from '../../components/Layout'
 import { Store } from '../../utils/Store'
-import PlaceOrderScreen from './placeorder'
 
 export default function PaymentScreen() {
 

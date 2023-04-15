@@ -1,11 +1,8 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { Layout } from "../../../components/Layout";
-import { useEffect } from "react";
-import data from "../../../utils/data";
 import Link from "next/link";
 import Image from "next/image";
-import { productionBrowserSourceMaps } from "../../../next.config";
 import { useContext } from "react";
 import { Store } from "../../../utils/Store";
 import db from "../../../utils/db";
