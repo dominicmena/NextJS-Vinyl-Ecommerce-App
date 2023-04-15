@@ -1,6 +1,5 @@
 
 import axios from 'axios'
-import { Inter } from 'next/font/google'
 import { useContext } from 'react'
 import { toast } from 'react-toastify'
 import { Layout } from '../../components/Layout'
