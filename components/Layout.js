@@ -3,7 +3,6 @@ import Link from "next/link";
 import React from "react";
 import { useContext } from "react";
 import { Store } from "../utils/Store";
-import data from "../utils/data";
 import { useState } from "react";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
