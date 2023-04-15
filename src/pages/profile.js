@@ -22,7 +22,7 @@ useEffect(() => {
     setValue('email', session.user.email)
 }, [session.user, setValue])
 
-const submitHandler = async ({name, email, password, confirmPassword}) => {
+const submitHandler = async ({name, email, password}) => {
     try {
         await axios.put('/api/auth/update', {
             name,
@@ -54,7 +54,7 @@ const submitHandler = async ({name, email, password, confirmPassword}) => {
         <div className='mb-4'>
             <label htmlFor='name'>Name</label>
             <input
-            type='name'
+            type='text'
             className='w-full'
             id='name'
             autoFocus
@@ -66,7 +66,67 @@ const submitHandler = async ({name, email, password, confirmPassword}) => {
                 <div className='text-red-500'>{errors.name.message}</div>
             )}
         </div>
+
+        <div className='mb-4'>
+            <label htmlFor='email'>Email</label>
+            <input
+            type='email'
+            className='w-full'
+            id='email'
+            {...register('email', {
+                required: 'Please enter email',
+                pattern: {
+                    value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/i,
+                    message: 'Please enter valid email'
+                },
+            })}
+            />
+            {errors.email && (
+                <div className='text-red-500'>{errors.email.message}</div>
+            )}
+        </div>
+
+        <div className='mb-4'>
+            <label htmlFor='password'>Password</label>
+            <input
+            type='password'
+            className='w-full'
+            id='password'
+            
+            {...register('password', {
+                minLength: {value: 6, message: 'password is more than 5 chars'},
+            })}
+            />
+            {errors.password && (
+                <div className='text-red-500'>{errors.password.message}</div>
+            )}
+        </div>
+
+        <div className='mb-4'>
+            <label htmlFor='confirmpassword'>Confirm Password</label>
+            <input
+            type='password'
+            className='w-full'
+            id='confirmPassword'
+            
+            {...register('confirmPassword', {
+                validate: (value) => value === getValues('password'),
+                minLength: {value: 6, message: 'confirm password is more than 5 chars'},
+            })}
+            />
+            {errors.confirmPassword && (
+                <div className='text-red-500'>{errors.confirmPassword.message}</div>
+            )}
+            {errors.confirmPassword && errors.confirmPassword.type === 'validate' && (
+                <div className='text-red-500'>Passwords do not match</div>
+            )}
+        </div>
+                <div className='mb-4'>
+                    <button className='primary-button'>Update Profile</button>
+                </div>
     </form>
     </Layout>
   )
 }
+
+ProfileScreen.auth = true
