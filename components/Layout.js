@@ -44,10 +44,10 @@ export function Layout({ title, children }) {
               <img src="/images/logo5.png" width={150} height={50}/>
             </Link>
             <div>
-              <Link href="/cart" className="p-2">
+              <Link href="/cart" className="p-3 text-[20px]">
                 Cart
                 {cartItemsCount > 0 && (
-                  <span className="ml-1 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
+                  <span className="ml-2 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
                     {cartItemsCount}
                   </span>
                 )}
@@ -57,7 +57,7 @@ export function Layout({ title, children }) {
                 "Loading"
               ) : session?.user ? (
                 <Menu as='div' className={'relative inline-block'}>
-                    <Menu.Button className='text-[#6792C4]'>
+                    <Menu.Button className='text-[#6792C4] text-[20px] p-2'>
                         {session.user.name}
                     </Menu.Button>
                     <Menu.Items className='absolute right-0 w-56 origin-top-right bg-white shadow-lg'>
@@ -75,7 +75,7 @@ export function Layout({ title, children }) {
                     </Menu.Items>
                 </Menu>
               ) : (
-                <Link href="/login" className="p-2">
+                <Link href="/login" className="p-2 text-[20px]">
                   Login
                 </Link>
               )}
