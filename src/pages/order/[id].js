@@ -244,3 +244,10 @@ function OrderScreen() {
 
 OrderScreen.auth = true;
 export default OrderScreen;
+
+
+// Reducer is used manage the component's state. The reducer updates the state based on the type of action dispatched to it.
+
+// The component first dispatches an action to fetch the order details when the component is mounted or when the order ID changes. It then renders the details of the order, including shipping and payment information and a table of order items.
+
+// The component also loads the PayPal script asynchronously, which allows the user to pay for the order. The component defines three functions to handle the PayPal payment flow: createOrder, onApprove, and onError. When the user clicks the PayPal payment button, the createOrder function is called to create a PayPal order with the order total. When the user approves the payment, the onApprove function captures the payment and sends a request to the server to update the order status. If there is an error during the payment process, the onError function is called to display an error message.

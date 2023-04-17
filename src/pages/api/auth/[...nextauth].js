@@ -43,9 +43,7 @@ export default NextAuth({
     ],
 })
 
-//This is a code that sets up user authentication for a Next.js application using NextAuth.
-
-//The code imports the required dependencies and sets up the authentication providers, in this case, only one - CredentialsProvider, which allows users to authenticate using email and password.
+//This is a code that sets up user authentication CredentialsProvider, which allows users to authenticate using email and password.
 
 //The jwt and session callbacks are used to set and retrieve data from the user's JSON Web Token (JWT) and session, respectively. The jwt callback is called when the user logs in, and it adds the user's ID and admin status to the token. The session callback is called when the user navigates through the app, and it adds the user's ID and admin status to the session.
 

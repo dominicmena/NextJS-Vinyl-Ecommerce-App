@@ -73,3 +73,6 @@ export function StoreProvider({ children }) {
   const value = { state, dispatch };
   return <Store.Provider value={value}>{children}</Store.Provider>;
 }
+
+
+// This code creates a React context called "Store" and a "StoreProvider" component that provides the state and a dispatch function to its children components. The state is initialized with an object containing a "cart" property that is either an empty cart or the cart stored in a browser cookie, and this state can be updated by dispatching actions to a reducer function. The reducer function handles different types of actions that can be dispatched, such as adding or removing an item from the cart, resetting the cart, saving shipping address and payment method. The updated state is then stored back into the cookie and returned as a new state.

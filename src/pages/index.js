@@ -66,3 +66,15 @@ export async function getServerSideProps() {
     }
   }
 }
+
+// exports a default function called "Home" that takes in two arguments: "vinyl" and "featuredVinyl". It then uses React's useContext hook to access the global state of the application and pulls out the "cart" object from it.
+
+// The function defines an "addToCartHandler" function that is used to add items to the cart. This function first checks if the item already exists in the cart by searching for its slug. If it does, it increments the quantity of the item by one; otherwise, it sets the quantity to one.
+
+// Next, the function makes a request to an API endpoint using Axios to retrieve the count of the item in stock. If there isn't enough stock to fulfill the requested quantity, the function displays an error message using the "toast" utility.
+
+// If there is enough stock, the function dispatches an action to add the item to the cart and displays a success message using "toast".
+
+// The function then returns a JSX block that renders a carousel of featured vinyl items, followed by a grid of all the available vinyl items, using the "ProductItem" component to display each item.
+
+// Finally, the code exports a server-side function called "getServerSideProps" that retrieves the vinyl data from a database and returns it as props for the "Home" component to use when rendering.

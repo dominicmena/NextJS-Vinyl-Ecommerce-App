@@ -135,3 +135,11 @@ function CartScreen() {
 export default dynamic(()=> Promise.resolve(CartScreen), {ssr:false})
 
 //exported the component so it's rendered client side
+
+// CartScreen, which displays the items in a shopping cart. It gets data from a global state object called "Store", which is managed using the useContext hook. It has two functions, one to remove an item from the cart and another to update the quantity of an item.
+
+// The component renders a table with columns for the item name, quantity, price, and an option to remove the item from the cart. The user can also update the quantity of each item using a select dropdown.
+
+// If there are no items in the cart, a message is displayed prompting the user to go shopping. If there are items in the cart, the component calculates the subtotal and displays it along with a checkout button.
+
+// The component is dynamically imported using the dynamic function from Next.js, which means that it won't be included in server-side rendering.

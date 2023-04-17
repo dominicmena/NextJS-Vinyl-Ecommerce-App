@@ -180,3 +180,10 @@ export default function PlaceOrderScreen() {
 }
 
 PlaceOrderScreen.auth = true;
+
+// The function starts by extracting the cart object, which contains information on the user's cart, from the global state store. It then calculates various values based on the cart information, such as the total price of the order, and stores them in variables.
+
+// If the user has not selected a payment method, they will be redirected to the payment selection page. The useEffect hook is used to trigger this behavior.
+
+// The placeOrderHandler function handles the actual placing of the order by sending a POST request to the server with the order details. It also updates the state to clear the user's cart and redirect them to the order confirmation page.
+

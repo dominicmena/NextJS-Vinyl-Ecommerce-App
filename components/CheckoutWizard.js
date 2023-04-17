@@ -21,3 +21,5 @@ export default function CheckoutWizard({ activeStep = 0 }) {
     </div>
   );
 }
+
+// This code exports a functional component named CheckoutWizard that takes an optional prop called activeStep. The component renders a series of steps with the text "User Login", "Shipping Address", "Payment Method", and "Place Order", each wrapped in a div. The currently active step is styled with a blue border and text, while the previous steps are styled with a gray border and text. If no activeStep prop is passed in, the default value is 0.
