@@ -33,17 +33,18 @@ toast.success('Product added to cart')
 
 
   return (
-<Layout title='Home Page'> 
-    <Carousel showThumbs={false} autoPlay width={400} className='flex justify-center'>
+<Layout title='Home Page' > 
+    <Carousel showThumbs={false} transitionTime={500} autoPlay width={800} infiniteLoop={true} className='flex justify-center' >
     {featuredVinyl.map((vinyl) => (
-      <div key={vinyl._id} className='flex'>
+      <div key={vinyl._id} className='flex w-auto'>
         <Link href={`/vinyl/${vinyl.slug}`}>
-        <img src={vinyl.banner} alt={vinyl.name}/>
+        <img src={vinyl.banner} alt={vinyl.name} />
         </Link>
       </div>
     ))}
+    
 
-    </Carousel> <h2 className='h2 my-4'>Latest Vinyl</h2>
+    </Carousel> <h2 className='text-[20px] my-4 font-bold'>Latest Vinyl</h2>
   <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
     {vinyl.map((vinyl) => (
       <ProductItem vinyl={vinyl} key={vinyl.slug}

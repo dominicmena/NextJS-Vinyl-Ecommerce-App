@@ -120,7 +120,7 @@ const data = {
       description:
         "Before Today is the eighth studio album by American recording artist Ariel Pink, released on June 8, 2010.",
       isFeatured: true,
-      banner: "/images/ariel2.png",
+      banner: "/images/a5.png",
     },
     {
       name: "Yellow House",
@@ -174,7 +174,7 @@ const data = {
       description:
         "Person Pitch is the third studio album by American musician Panda Bear. It was released in 2007 and is known for its use of sampling and layered vocals.",
       isFeatured: true,
-      banner: "/images/ppb.png"
+      banner: "/images/ppb6.png"
     },
   ],
 };
