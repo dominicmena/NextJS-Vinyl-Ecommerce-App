@@ -59,7 +59,7 @@ export default function LoginScreen() {
             message: 'Please enter valid email address',
         }
         })}
-            className="w-full"
+            className="w-full border-2 border-black"
             id="email"
             autoFocus
           ></input>
@@ -67,7 +67,7 @@ export default function LoginScreen() {
             <div className="text-red-500">{errors.email.message}</div>
           )}
         </div>
-        <div className="mb-4">
+        <div className="mb-4 ">
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -75,7 +75,7 @@ export default function LoginScreen() {
                 required: 'Please enter password',
                 minLength: { value: 6, message: 'password is more than 5 chars'},
             })}
-            className="w-full"
+            className="w-full border-2 border-black"
             id="password"
             autoFocus
           ></input>
