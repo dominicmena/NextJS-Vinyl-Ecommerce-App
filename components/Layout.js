@@ -41,7 +41,7 @@ export function Layout({ title, children }) {
         <header>
           <nav className="flex h-12 justify-between shadow-md it ems-center px-4">
             <Link href="/" className="text-lg font-bold">
-              uVinyl
+              <img src="/images/logo5.png" width={150} height={50}/>
             </Link>
             <div>
               <Link href="/cart" className="p-2">
@@ -57,7 +57,7 @@ export function Layout({ title, children }) {
                 "Loading"
               ) : session?.user ? (
                 <Menu as='div' className={'relative inline-block'}>
-                    <Menu.Button className='text-blue-600'>
+                    <Menu.Button className='text-[#6792C4]'>
                         {session.user.name}
                     </Menu.Button>
                     <Menu.Items className='absolute right-0 w-56 origin-top-right bg-white shadow-lg'>

@@ -2,12 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  background-color: #eae8e1
+}
+
 .card {
   @apply mb-5 block rounded-lg border border-gray-200 shadow-md;
 }
 
 .primary-button {
-  @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500
+  @apply rounded bg-[#EDC26A] py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-500
 }
 
 .default-button {
@@ -16,7 +20,7 @@
 
 
 a {
-  @apply text-blue-600 hover:text-blue-800
+  @apply text-[#6792C4] hover:text-blue-800
 }
 
 input,
