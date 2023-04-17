@@ -82,16 +82,17 @@ const data = {
         "Lonerism is the second studio album by Australian musical project Tame Impala. It was released on 5 October 2012 by Modular Recordings.",
     },
     {
-        name: 'Madvillainy',
-        slug: 'madvillainy',
-        genre: 'Hip-Hop',
-        image: '/images/madvillainy.png',
-        price: 25,
-        artist: 'Madvillain',
-        rating: 4.8,
-        numReviews: 12,
-        countInStock: 5,
-        description: 'Madvillainy is a collaboration between rapper MF Doom and producer Madlib, released on March 23, 2004, on Stones Throw Records. It is widely regarded as one of the greatest underground hip-hop albums of all time.'
+      name: "Madvillainy",
+      slug: "madvillainy",
+      genre: "Hip-Hop",
+      image: "/images/madvillainy.png",
+      price: 25,
+      artist: "Madvillain",
+      rating: 4.8,
+      numReviews: 12,
+      countInStock: 5,
+      description:
+        "Madvillainy is a collaboration between rapper MF Doom and producer Madlib, released on March 23, 2004, on Stones Throw Records. It is widely regarded as one of the greatest underground hip-hop albums of all time.",
     },
     {
       name: "Room on Fire",
@@ -118,6 +119,8 @@ const data = {
       countInStock: 2,
       description:
         "Before Today is the eighth studio album by American recording artist Ariel Pink, released on June 8, 2010.",
+      isFeatured: true,
+      banner: "/images/ariel2.png",
     },
     {
       name: "Yellow House",
@@ -133,46 +136,46 @@ const data = {
         "Yellow House is the second studio album by American indie rock band Grizzly Bear, released on September 5, 2006, on Warp Records.",
     },
     {
-        name: 'Paranoid',
-        slug: 'paranoid',
-        genre: 'Heavy Metal',
-        image: '/images/bs1.jpeg',
-        price: 23,
-        artist: 'Black Sabbath',
-        rating: 4.8,
-        numReviews: 18,
-        countInStock: 7,
-        description: 'Paranoid is the second studio album by English rock band Black Sabbath, released on September 18, 1970, on Vertigo Records.'
+      name: "Paranoid",
+      slug: "paranoid",
+      genre: "Heavy Metal",
+      image: "/images/bs1.jpeg",
+      price: 23,
+      artist: "Black Sabbath",
+      rating: 4.8,
+      numReviews: 18,
+      countInStock: 7,
+      description:
+        "Paranoid is the second studio album by English rock band Black Sabbath, released on September 18, 1970, on Vertigo Records.",
     },
     {
-        name: 'Homogenic',
-        slug: 'homogenic',
-        genre: 'Art Pop',
-        image: '/images/homogenic.png',
-        price: 25,
-        artist: 'Bjork',
-        rating: 4.8,
-        numReviews: 15,
-        countInStock: 5,
-        description: 'Homogenic is the fourth studio album by Icelandic singer Bjork. It was released in 1997 and marked a stylistic shift towards a more experimental and electronic sound.'
-        },
-        {
-            name: 'Person Pitch',
-            slug: 'person-pitch',
-            genre: 'Experimental Pop',
-            image: '/images/person-pitch.png',
-            price: 22,
-            artist: 'Panda Bear',
-            rating: 4.5,
-            numReviews: 12,
-            countInStock: 3,
-            description: 'Person Pitch is the third studio album by American musician Panda Bear. It was released in 2007 and is known for its use of sampling and layered vocals.'
-            },
-    
-    
-    
-    
-    
+      name: "Homogenic",
+      slug: "homogenic",
+      genre: "Art Pop",
+      image: "/images/homogenic.png",
+      price: 25,
+      artist: "Bjork",
+      rating: 4.8,
+      numReviews: 15,
+      countInStock: 5,
+      description:
+        "Homogenic is the fourth studio album by Icelandic singer Bjork. It was released in 1997 and marked a stylistic shift towards a more experimental and electronic sound.",
+    },
+    {
+      name: "Person Pitch",
+      slug: "person-pitch",
+      genre: "Experimental Pop",
+      image: "/images/person-pitch.png",
+      price: 22,
+      artist: "Panda Bear",
+      rating: 4.5,
+      numReviews: 12,
+      countInStock: 3,
+      description:
+        "Person Pitch is the third studio album by American musician Panda Bear. It was released in 2007 and is known for its use of sampling and layered vocals.",
+      isFeatured: true,
+      banner: "/images/ppb.png"
+    },
   ],
 };
 

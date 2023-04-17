@@ -8,9 +8,12 @@ import Vinyl from '../../models/Vinyl'
 
 import db from '../../utils/db'
 import { Store } from '../../utils/Store'
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import Link from 'next/link'
 
 
-export default function Home({vinyl}) {
+export default function Home({vinyl, featuredVinyl}) {
 
   const { state, dispatch } = useContext(Store)
   const { cart } = state
@@ -31,6 +34,16 @@ toast.success('Product added to cart')
 
   return (
 <Layout title='Home Page'> 
+    <Carousel showThumbs={false} autoPlay width={400} className='flex justify-center'>
+    {featuredVinyl.map((vinyl) => (
+      <div key={vinyl._id} className='flex'>
+        <Link href={`/vinyl/${vinyl.slug}`}>
+        <img src={vinyl.banner} alt={vinyl.name}/>
+        </Link>
+      </div>
+    ))}
+
+    </Carousel> <h2 className='h2 my-4'>Latest Vinyl</h2>
   <div className='grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4'>
     {vinyl.map((vinyl) => (
       <ProductItem vinyl={vinyl} key={vinyl.slug}
@@ -44,8 +57,10 @@ toast.success('Product added to cart')
 export async function getServerSideProps() {
   await db.connect()
   const vinyl = await Vinyl.find().lean();
+  const featuredVinyl = await Vinyl.find({isFeatured: true}).lean();
   return {
     props: {
+      featuredVinyl: featuredVinyl.map(db.convertDocToObj),
       vinyl: vinyl.map(db.convertDocToObj)
     }
   }
