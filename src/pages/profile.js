@@ -55,7 +55,7 @@ const submitHandler = async ({name, email, password}) => {
             <label htmlFor='name'>Name</label>
             <input
             type='text'
-            className='w-full'
+            className='w-full border-2 border-black'
             id='name'
             autoFocus
             {...register('name', {
@@ -71,7 +71,7 @@ const submitHandler = async ({name, email, password}) => {
             <label htmlFor='email'>Email</label>
             <input
             type='email'
-            className='w-full'
+            className='w-full border-2 border-black'
             id='email'
             {...register('email', {
                 required: 'Please enter email',
@@ -90,7 +90,7 @@ const submitHandler = async ({name, email, password}) => {
             <label htmlFor='password'>Password</label>
             <input
             type='password'
-            className='w-full'
+            className='w-full border-2 border-black'
             id='password'
             
             {...register('password', {
@@ -106,7 +106,7 @@ const submitHandler = async ({name, email, password}) => {
             <label htmlFor='confirmpassword'>Confirm Password</label>
             <input
             type='password'
-            className='w-full'
+            className='w-full border-2 border-black'
             id='confirmPassword'
             
             {...register('confirmPassword', {

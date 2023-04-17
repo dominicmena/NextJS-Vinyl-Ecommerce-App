@@ -63,7 +63,7 @@ export default function ShippingScreen() {
             <div className='mb-4'>
             <label htmlFor='fullName'>Full Name</label>
             <input
-            className='w-full'
+            className='w-full border-2 border-black'
             id='fullName'
             autoFocus
             {...register('fullName', {
@@ -79,7 +79,7 @@ export default function ShippingScreen() {
             <div className='mb-4'>
                 <label htmlFor='address'>Address</label>
                 <input 
-                className='w-full'
+                className='w-full border-2 border-black'
                 id='address'
                 {...register('address', {
                     required: 'Please enter address',
@@ -92,7 +92,7 @@ export default function ShippingScreen() {
             </div>
             <div className='mb-4'>
                 <label htmlFor='city'>City</label>
-                <input className='w-full'
+                <input className='w-full border-2 border-black'
                 id='city'
                 {...register('city', {
                     required: 'Please enter city',
@@ -105,7 +105,7 @@ export default function ShippingScreen() {
             <div className='mb-4'>
                 <label htmlFor='postalCode'>Postal Code</label>
                 <input 
-                className='w-full'
+                className='w-full border-2 border-black'
                 id='postalcode'
                 {...register('postalCode', {
                     required: 'Please enter postal code',
@@ -117,7 +117,7 @@ export default function ShippingScreen() {
             </div>
             <div className='mb-4'>
                 <label htmlFor='country'>Country</label>
-                <input className='w-full'
+                <input className='w-full border-2 border-black'
                 id='country'
                 {...register('country', {
                     required: 'Please enter country'
