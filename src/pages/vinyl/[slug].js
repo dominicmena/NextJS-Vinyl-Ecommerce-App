@@ -57,13 +57,13 @@ router.push('/cart')
         <div>
           <ul>
             <li>
-              <h1 className="text-lg">{vinyl.name}</h1>
+              <h1 className="text-lg">{vinyl.name}</h1><br></br>
             </li>
-            <li>Genre: {vinyl.genre} </li>
-            <li>Artist: {vinyl.artist}</li>
+            <li>Genre: {vinyl.genre} </li><br></br>
+            <li>Artist: {vinyl.artist}</li><br></br>
             <li>
-              {vinyl.rating} of {vinyl.numReviews}
-            </li>
+             Rating: {vinyl.rating} of {vinyl.numReviews} reviews
+            </li><br></br>
 
             <li>Description: {vinyl.description}</li>
           </ul>
