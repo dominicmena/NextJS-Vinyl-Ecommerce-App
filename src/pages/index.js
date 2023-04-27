@@ -34,7 +34,7 @@ toast.success('Product added to cart')
 
   return (
 <Layout title='Home Page' > 
-    <Carousel showThumbs={false} transitionTime={500} autoPlay width={800} infiniteLoop={true} className='flex justify-center' >
+    <Carousel showThumbs={false} transitionTime={500} autoPlay width={900} infiniteLoop={true} className='flex justify-center' >
     {featuredVinyl.map((vinyl) => (
       <div key={vinyl._id} className='flex w-auto'>
         <Link href={`/vinyl/${vinyl.slug}`}>
