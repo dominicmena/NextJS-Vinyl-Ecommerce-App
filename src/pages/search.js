@@ -4,7 +4,11 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { Layout } from "../../components/Layout";
 import ProductItem from "../../components/ProductItem";
+import Vinyl from "../../models/Vinyl";
+import db from "../../utils/db";
 import { Store } from "../../utils/Store";
+import { useContext } from "react";
+
 
 const PAGE_SIZE = 2;
 
@@ -257,9 +261,11 @@ export async function getServerSideProps({query}) {
     : sort === 'toprated' ? {rating: -1}
     : sort === 'newest' ? {createdAt: -1}
     : {_id: -1}
-    const categories = await Product.find().distinct('category')
-    const brands = await Product.find().distinct('brand')
-    const productDocs = await Product.find(
+
+    await db.connect()
+    const categories = await Vinyl.find().distinct('category')
+    const brands = await Vinyl.find().distinct('brand')
+    const productDocs = await Vinyl.find(
         {
             ...queryFilter,
             ...categoryFilter,
@@ -273,4 +279,25 @@ export async function getServerSideProps({query}) {
     .skip(pageSize * (page - 1))
     .limit(pageSize)
     .lean()
+
+    const countProducts = await Vinyl.countDocuments({
+        ...queryFilter,
+            ...categoryFilter,
+            ...priceFilter,
+            ...brandFilter,
+            ...ratingFilter
+    });
+    await db.disconnect()
+    const products = productDocs.map(db.convertDocToObj)
+
+    return {
+        props: {
+            products,
+            countProducts,
+            page,
+            pages: Math.ceil(countProducts / pageSize),
+            categories,
+            brands,
+        },
+    }
 }
