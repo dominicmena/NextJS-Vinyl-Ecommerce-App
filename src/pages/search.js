@@ -113,7 +113,7 @@ export default function Search(props) {
               value={genre}
               onChange={genreHandler}
             >
-              <option value="all"></option>
+              <option value="all">All</option>
               {genres &&
                 genres.map((genre) => (
                   <option key={genre} value={genre}>
