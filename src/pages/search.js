@@ -33,20 +33,20 @@ export default function Search(props) {
   const router = useRouter();
   const {
     query = "all",
-    category = "all",
-    brand = "all",
+    genre = "all",
+    artist = "all",
     price = "all",
     rating = "all",
     sort = "all",
     page = 1,
   } = router.query;
 
-  const { products, countProducts, categories, brands, pages } = props;
+  const { vinyl, countVinyl, genres, artists, pages } = props;
 
   const filterSearch = ({
     page,
-    category,
-    brand,
+    genre,
+    artist,
     sort,
     min,
     max,
@@ -58,8 +58,8 @@ export default function Search(props) {
     if (page) query.page = page;
     if (searchQuery) query.searchQuery = searchQuery;
     if (sort) query.sort = sort;
-    if (category) query.category = category;
-    if (brand) query.brand = brand;
+    if (genre) query.genre = genre;
+    if (artist) query.artist = artist;
     if (price) query.price = price;
     if (rating) query.rating = rating;
     if (min) query.min ? query.min : query.min === 0 ? 0 : min;
@@ -70,14 +70,14 @@ export default function Search(props) {
       query: query,
     });
   };
-  const categoryHandler = (e) => {
-    filterSearch({ category: e.target.value });
+  const genreHandler = (e) => {
+    filterSearch({ genre: e.target.value });
   };
   const pageHandler = (page) => {
     filterSearch({ page });
   };
-  const brandHandler = (e) => {
-    filterSearch({ brand: e.target.value });
+  const artistHandler = (e) => {
+    filterSearch({ artist: e.target.value });
   };
   const sortHandler = (e) => {
     filterSearch({ sort: e.target.value });
@@ -90,15 +90,15 @@ export default function Search(props) {
   };
 
   const { state, dispatch } = useContext(Store);
-  const addToCartHandler = async (product) => {
-    const existItem = state.cart.cartItems.find((x) => x._id === product._id);
+  const addToCartHandler = async (vinyl) => {
+    const existItem = state.cart.cartItems.find((x) => x._id === vinyl._id);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/products/${product._id}`);
+    const { data } = await axios.get(`/api/vinyl/${vinyl._id}`);
     if (data.countInStock < quantity) {
       toast.error("Sorry. Item is out of stock");
       return;
     }
-    dispatch({ type: " CART_ADD_ITEM", payload: { ...product, quantity } });
+    dispatch({ type: " CART_ADD_ITEM", payload: { ...vinyl, quantity } });
     router.push("/cart");
   };
 
@@ -107,29 +107,29 @@ export default function Search(props) {
       <div className="grid md:grid-cols-4 md:gap-5">
         <div>
           <div className="my-3">
-            <h2>Categories</h2>
+            <h2>Genres</h2>
             <select
               className="w-full"
-              value={category}
-              onChange={categoryHandler}
+              value={genre}
+              onChange={genreHandler}
             >
               <option value="all"></option>
-              {categories &&
-                categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
+              {genres &&
+                genres.map((genre) => (
+                  <option key={genre} value={genre}>
+                    {genre}
                   </option>
                 ))}
             </select>
           </div>
           <div className="mb-3">
-            <h2>Brands</h2>
-            <select className="w-full" value={brand} onChange={brandHandler}>
+            <h2>Artists</h2>
+            <select className="w-full" value={artist} onChange={artistHandler}>
               <option value="all">All</option>
-              {brands &&
-                brands.map((brand) => (
-                  <option key={brand} value={brand}>
-                    {brand}
+              {artists &&
+                artists.map((artist) => (
+                  <option key={artist} value={artist}>
+                    {artist}
                   </option>
                 ))}
             </select>
@@ -162,16 +162,16 @@ export default function Search(props) {
         <div className="md:col-span-3">
           <div className="mb-2 flex items-center justify-between border-b-2 pb-2">
             <div className="flex items-center">
-              {products.length === 0 ? "No" : countProducts} Results
+              {vinyl.length === 0 ? "No" : countVinyl} Results
               {query !== "all" && query !== "" && " : " + query}
-              {category !== "all" && " : " + category}
-              {brand !== "all" && " : " + brand}
+              {genre !== "all" && " : " + genre}
+              {artist !== "all" && " : " + artist}
               {price !== "all" && " : Price " + price}
               {rating !== "all" && " :  Rating" + rating + " & up"}
               &nbsp;
               {(query !== "all" && query !== "") ||
-              category !== "all" ||
-              brand !== "all" ||
+              genre !== "all" ||
+              artist !== "all" ||
               rating !== "all" ||
               price !== "all" ? (
                 <button onClick={() => router.push("/search")}>
@@ -191,16 +191,16 @@ export default function Search(props) {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                {products.map((product) => (
+                {vinyl.map((vinyl) => (
                     <ProductItem
-                    key={product._id}
-                    product={product}
+                    key={vinyl._id}
+                    vinyl={vinyl}
                     addToCartHandler={addToCartHandler}
                     />
                 ))}
           </div>
           <ul className="flex">
-            {products.length > 0 &&
+            {vinyl.length > 0 &&
             [...Array(pages).keys()].map((pageNumber) => (<li key={pageNumber}>
                 <button
                 className={`default-button m-2 ${
@@ -220,8 +220,8 @@ export default function Search(props) {
 export async function getServerSideProps({query}) {
     const pageSize = query.pageSize || PAGE_SIZE;
     const page = query.page || 1;
-    const category = query.category || '';
-    const brand = query.brand || '';
+    const genre = query.genre || '';
+    const artist = query.artist || '';
     const price = query.price || '';
     const rating = query.rating || '';
     const sort = query.sort || '';
@@ -236,8 +236,8 @@ export async function getServerSideProps({query}) {
         },
     }
     : {}
-    const categoryFilter = category && category !== 'all' ? { category } : {};
-    const brandFilter = brand && brand !== 'all' ? { brand } : {};
+    const genreFilter = genre && genre !== 'all' ? { genre } : {};
+    const artistFilter = artist && artist !== 'all' ? { artist } : {};
     const ratingFilter = rating && rating !== 'all'
     ? {
         rating: {
@@ -263,14 +263,14 @@ export async function getServerSideProps({query}) {
     : {_id: -1}
 
     await db.connect()
-    const categories = await Vinyl.find().distinct('category')
-    const brands = await Vinyl.find().distinct('brand')
+    const genres = await Vinyl.find().distinct('genre')
+    const artists = await Vinyl.find().distinct('artist')
     const productDocs = await Vinyl.find(
         {
             ...queryFilter,
-            ...categoryFilter,
+            ...genreFilter,
             ...priceFilter,
-            ...brandFilter,
+            ...artistFilter,
             ...ratingFilter
         },
         '-reviews'
@@ -280,24 +280,24 @@ export async function getServerSideProps({query}) {
     .limit(pageSize)
     .lean()
 
-    const countProducts = await Vinyl.countDocuments({
+    const countVinyl = await Vinyl.countDocuments({
         ...queryFilter,
-            ...categoryFilter,
+            ...genreFilter,
             ...priceFilter,
-            ...brandFilter,
+            ...artistFilter,
             ...ratingFilter
     });
     await db.disconnect()
-    const products = productDocs.map(db.convertDocToObj)
+    const vinyl = productDocs.map(db.convertDocToObj)
 
     return {
         props: {
-            products,
-            countProducts,
+            vinyl,
+            countVinyl,
             page,
-            pages: Math.ceil(countProducts / pageSize),
-            categories,
-            brands,
+            pages: Math.ceil(countVinyl / pageSize),
+            genres,
+            artists,
         },
     }
 }
