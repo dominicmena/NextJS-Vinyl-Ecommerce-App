@@ -88,17 +88,18 @@ export default function Search(props) {
   const ratingHandler = (e) => {
     filterSearch({ rating: e.target.value });
   };
-
+ 
   const { state, dispatch } = useContext(Store);
+
   const addToCartHandler = async (vinyl) => {
-    const existItem = state.cart.cartItems.find((x) => x._id === vinyl._id);
+    const existItem = state.cart.cartItems.find((x) => x.slug === vinyl.slug);
     const quantity = existItem ? existItem.quantity + 1 : 1;
-    const { data } = await axios.get(`/api/vinyl/${vinyl._id}`);
+    const { data } = await axios.get(`/api/vinyls/${vinyl._id}`);
     if (data.countInStock < quantity) {
       toast.error("Sorry. Item is out of stock");
       return;
     }
-    dispatch({ type: " CART_ADD_ITEM", payload: { ...vinyl, quantity } });
+    dispatch({ type: 'CART_ADD_ITEM', payload: { ...vinyl, quantity } });
     router.push("/cart");
   };
 
@@ -163,24 +164,24 @@ export default function Search(props) {
           <div className="mb-2 flex items-center justify-between border-b-2 pb-2">
             <div className="flex items-center">
               {vinyl.length === 0 ? "No" : countVinyl} Results
-              {query !== "all" && query !== "" && " : " + query}
-              {genre !== "all" && " : " + genre}
-              {artist !== "all" && " : " + artist}
-              {price !== "all" && " : Price " + price}
-              {rating !== "all" && " :  Rating" + rating + " & up"}
+              {query !== 'all' && query !== '' && ' : ' + query}
+              {genre !== 'all' && ' : ' + genre}
+              {artist !== 'all' && ' : ' + artist}
+              {price !== 'all' && ' : Price ' + price}
+              {rating !== 'all' && ' :  Rating' + rating + ' & up'}
               &nbsp;
-              {(query !== "all" && query !== "") ||
-              genre !== "all" ||
-              artist !== "all" ||
-              rating !== "all" ||
-              price !== "all" ? (
+              {(query !== 'all' && query !== '') ||
+              genre !== 'all' ||
+              artist !== 'all' ||
+              rating !== 'all' ||
+              price !== 'all' ? (
                 <button onClick={() => router.push("/search")}>
                   <XCircleIcon className="h-5 w-5" />
                 </button>
               ) : null}
             </div>
             <div>
-              Sort by{" "}
+              Sort by{' '}
               <select value={sort} onChange={sortHandler}>
                 <option value="featured">Featured</option>
                 <option value="lowest">Price: Low to High</option>
@@ -235,7 +236,7 @@ export async function getServerSideProps({query}) {
             $options: 'i',
         },
     }
-    : {}
+    : {};
     const genreFilter = genre && genre !== 'all' ? { genre } : {};
     const artistFilter = artist && artist !== 'all' ? { artist } : {};
     const ratingFilter = rating && rating !== 'all'
