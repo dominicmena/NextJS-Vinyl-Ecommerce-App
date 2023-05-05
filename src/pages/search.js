@@ -194,7 +194,7 @@ export default function Search(props) {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {vinyl.map((vinyl) => (
                     <ProductItem
-                    key={vinyl._id}
+                    key={vinyl.slug}
                     vinyl={vinyl}
                     addToCartHandler={addToCartHandler}
                     />
