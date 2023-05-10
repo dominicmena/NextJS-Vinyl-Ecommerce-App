@@ -50,8 +50,8 @@ export function Layout({ title, children }) {
       <div className="flex min-h-screen flex-col justify-between">
         <header>
           <nav className="flex h-12 justify-between shadow-md it ems-center px-4">
-            <Link href="/" className="text-lg font-bold">
-              <img src="/images/logo5.png" width={150} height={50}/>
+            <Link href="/" className="pt-1">
+              <img src="/images/logow.png" width={150} height={50}/>
             </Link>
             <form
             onSubmit={submitHandler}
