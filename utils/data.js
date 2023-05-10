@@ -134,6 +134,8 @@ const data = {
       countInStock: 3,
       description:
         "Yellow House is the second studio album by American indie rock band Grizzly Bear, released on September 5, 2006, on Warp Records.",
+        isFeatured: true,
+      banner: "/images/gbf3.jpeg",
     },
     {
       name: "Paranoid",

@@ -51,11 +51,11 @@ export function Layout({ title, children }) {
         <header>
           <nav className="flex h-12 justify-between shadow-md it ems-center px-4">
             <Link href="/" className="pt-1">
-              <img src="/images/logow.png" width={150} height={50}/>
+              <img src="/images/logow.png" width={100} height={40}/>
             </Link>
             <form
             onSubmit={submitHandler}
-            className='mx-auto hidden w-full justify-center md:flex'>
+            className='mx-auto hidden justify-center md:flex'>
               <input
               onChange={(e) => setQuery(e.target.value)}
               type='text'
@@ -70,7 +70,7 @@ export function Layout({ title, children }) {
             </button>
             </form>
             <div>
-              <Link href="/cart" className="p-3 text-[20px]">
+              <Link href="/cart" className="p-2 text-[18px]">
                 Cart
                 {cartItemsCount > 0 && (
                   <span className="ml-2 rounded-full bg-red-600 px-2 py-1 text-xs font-bold text-white">
@@ -83,7 +83,7 @@ export function Layout({ title, children }) {
                 "Loading"
               ) : session?.user ? (
                 <Menu as='div' className={'relative inline-block'}>
-                    <Menu.Button className='text-[#6792C4] text-[20px] p-2'>
+                    <Menu.Button className='text-[#6792C4] text-[18px] p-2'>
                         {session.user.name}
                     </Menu.Button>
                     <Menu.Items className='absolute right-0 w-56 origin-top-right bg-white shadow-lg'>
