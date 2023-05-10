@@ -126,7 +126,7 @@ const data = {
       name: "Yellow House",
       slug: "yellow-house",
       genre: "Indie Rock",
-      image: "/images/gb1.jpeg",
+      image: "/images/gb12.jpeg",
       price: 22,
       artist: "Grizzly Bear",
       rating: 4.5,
