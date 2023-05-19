@@ -51,7 +51,7 @@ export function Layout({ title, children }) {
         <header>
           <nav className="flex h-12 justify-between shadow-md it ems-center px-4">
             <Link href="/" className="pt-1">
-              <img src="/images/logow.png" width={100} height={40}/>
+              <img src="/images/Logow.png" width={100} height={40}/>
             </Link>
             <form
             onSubmit={submitHandler}
