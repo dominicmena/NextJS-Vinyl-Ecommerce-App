@@ -282,7 +282,7 @@ export async function getServerSideProps({query}) {
     .lean()
 
     const countVinyl = await Vinyl.countDocuments({
-        ...queryFilter,
+            ...queryFilter,
             ...genreFilter,
             ...priceFilter,
             ...artistFilter,

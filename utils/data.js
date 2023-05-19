@@ -57,7 +57,7 @@ const data = {
     },
     {
       name: "DAMN",
-      slug: "damn",
+      slug: "kendrick-lamar",
       genre: "Rap",
       image: "/images/damn1.png",
       price: 30,
