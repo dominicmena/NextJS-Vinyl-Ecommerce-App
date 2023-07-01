@@ -71,11 +71,11 @@ router.push('/cart')
         <div>
           <div className="card p-5">
             <div className="mb-2 flex justify-between">
-              <div>Price</div>
+              <div>Price:</div>
               <div>${vinyl.price}</div>
               </div>
               <div className="mb-2 flex justify-between">
-                <div>Status</div>
+                <div>Status:</div>
                 <div>{vinyl.countInStock > 0 ? "In Stock" : "Unavailable"}</div>
               </div>
               <button className="primary-button w-full" onClick={addToCartHandler}>Add to Cart</button>
